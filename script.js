@@ -1,9 +1,9 @@
 //VARIAVEIS
-var chances = 7;
-var acertos = 0;
-var imagem = 0;
+let chances = 7;
+let acertos = 0;
+let imagem = 0;
 //BANCO DE PALAVRAS
-var palavras = ["cavalo", "zebra", "pinguim", "tartaruga", "elefante","cachorro", "gato", "girafa", "macaco", "ornitorrinco","foca", "vaca", "panda", "arara", "periquito", "borboleta"];
+let palavras = ["cavalo", "zebra", "pinguim", "tartaruga", "elefante","cachorro", "gato", "girafa", "macaco", "ornitorrinco","foca", "vaca", "panda", "arara", "periquito", "borboleta"];
 //SORTEIA PALAVRA
 let palavra = palavras[Math.floor(Math.random() * palavras.length)];
 console.log(palavra);
@@ -30,6 +30,7 @@ for (posicao = 0; posicao < letras.length; posicao++) {
 //DIGITANDO A PALAVRA
 function escolheLetra(letra) {
   let acertou = false;
+  //VERIFICANDO ACERTO
   for (posicao = 0; posicao < palavra.length; posicao++) {  
     if(acertos < palavra.length && chances > 0){
       if (letra === palavra[posicao]) {
@@ -44,6 +45,7 @@ function escolheLetra(letra) {
       }
     }  
   }
+  //VERIFICANDO ERRO
     if(acertos < palavra.length && chances > 0){ 
       if (acertou === false) {
         if(imagem < 7){
@@ -56,6 +58,7 @@ function escolheLetra(letra) {
         chances--;
       }
     }
+    //CONDIÇÃO DE DERROTA
     if (chances == 0) {
       let mensagem = document.createElement("p");
       let texto = document.createTextNode("Você perdeu!");
@@ -64,6 +67,7 @@ function escolheLetra(letra) {
       div.appendChild(mensagem);
       chances--;
     }
+    //CONDIÇÃO DE VITÓRIA
     if(chances > 0){
       if (acertos == palavra.length) {
         let mensagem = document.createElement("p");
